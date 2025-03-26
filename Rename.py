@@ -46,3 +46,4 @@ def rename_bills():
 rename_bills()
 
 print("\n🎉 All applicable files renamed successfully!")
+

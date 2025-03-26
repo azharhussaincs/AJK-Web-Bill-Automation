@@ -8,6 +8,7 @@ import os
 import time
 import pandas as pd
 import glob
+import subprocess
 
 # Define strict project directory for downloads
 project_dir = os.path.abspath("downloaded_bills")
@@ -112,3 +113,12 @@ except Exception as e:
     print(f"🚨 Error initializing WebDriver or during execution: {e}")
     if 'driver' in locals():
         driver.quit()  # Ensure driver quits in case of initialization errors
+
+
+# Run the Rename.py script after completing the downloads
+rename_script = os.path.join(os.getcwd(), "Rename.py")
+subprocess.run(["python3", rename_script])
+
+print("\n✅ Rename.py executed successfully!")
+unit_consumed=os.path.join(os.getcwd(),"ExtrictData.py")
+subprocess.run(["python3",unit_consumed])
